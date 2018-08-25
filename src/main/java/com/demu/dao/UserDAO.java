@@ -55,4 +55,65 @@ public class UserDAO {
         return user;
     }
 
+    /**
+     * 增加一个新用户数据到数据库的方法
+     * @return
+     */
+    public Users addUser(Users user) {
+        try {
+
+            // 返回值：是insert执行过程中影响的行数
+            getSession().insert("addUser", user);
+
+            sqlSession.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return user;
+    }
+
+    /**
+     * 用于修改用户资料的方法
+     * @return
+     */
+    public Users updateUsers(Users user) {
+        try {
+
+            // 返回值：是insert执行过程中影响的行数
+            getSession().update("updateUser", user);
+
+//            提交操作
+            sqlSession.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return user;
+    }
+
+    /**
+     * 用于修改用户资料的方法
+     * @return
+     */
+    public void delUsers(Integer id) {
+        try {
+
+            // 返回值：是insert执行过程中影响的行数
+            getSession().delete("delUser", id);
+
+            sqlSession.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
 }
+

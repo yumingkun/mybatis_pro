@@ -29,6 +29,44 @@ namespace属性是用来配置命名空间，主要进行session级别的缓存�
         <!--select * from users where id=#{id}-->
     <!--</select>-->
 
+
+
+    <!--插入操作-->
+    <sql id="user_fields">
+        username, userpass, nickname, age, gender, email, phone, createTime, updateTime, lastLogin, userstatus, remark
+    </sql>
+
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        insert into users( <include refid="user_fields"></include>)
+        values(#{username},#{userpass}, #{nickname}, #{age}, #{gender}, #{email}, #{phone}, #{createTime}, #{updateTime}, #{lastLogin}, #{userStatus}, #{remark})
+    </insert>
+
+
+
+    <update id="updateUser">
+        update users
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="userpass != null">userpass = #{userpass},</if>
+            <if test="nickname != null">nickname = #{nickname},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="updateTime != null">updateTime = #{updateTime},</if>
+            <if test="lastLogin != null">lastlogin = #{lastLogin},</if>
+            <if test="userStatus != null">userStatus = #{userStatus},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <delete id="delUser">
+        delete from users where id = #{id}
+    </delete>
+
 </mapper>
 
         <!--从官方文档引入-->

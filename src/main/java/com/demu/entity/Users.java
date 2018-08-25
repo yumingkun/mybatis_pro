@@ -29,6 +29,38 @@ public class Users {
         this.id = id;
     }
 
+    public Users(String username, String userpass, String nickname, Integer age, String gender, String phone, String email, Date createTime, Date updateTime, Date lastLogin, Integer userStatus) {
+        this.username = username;
+        this.userpass = userpass;
+        this.nickname = nickname;
+        this.age = age;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.lastLogin = lastLogin;
+        this.userStatus = userStatus;
+    }
+
+    public Users(int id, String nickname, int age, String gender, String email, String phone, Date date, String remark) {
+        this.id=id;
+    }
+
+    public Users(int id , String nickname, Integer age, String gender, String phone, String email, Date updateTime, String remark) {
+        this.id = id;
+
+        this.nickname = nickname;
+        this.age = age;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+
+        this.updateTime = updateTime;
+
+        this.remark = remark;
+    }
+
     public int getId() {
         return id;
     }
