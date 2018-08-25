@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+mapper 用于定义一个映射配置文件的根节点
+namespace属性是用来配置命名空间，主要进行session级别的缓存管理
+命名空间默认情况下，使用我们当前操作的实体类的全路径
+-->
+<mapper namespace="com.demu.entity.Users">
+
+    <!--<select id="findUsers" resultType="com.demu.entity.Users">-->
+    <select id="findUsers" resultMap="findUsers">
+        select * from users
+        <if test="id!=null">
+            where id=#{id}
+        </if>
+    </select>
+
+    <!--自定义映射关系集合，主要包含对于一些自定义操作的配置，如不一致的属性和字段-->
+    <resultMap id="findUsers" type="com.demu.entity.Users">
+        <!--<id column="" property=""></id>用于主键-->
+        <!--result配置，主要配置普通属性，column表示的是数据库字段名称，property配置的是实体类的属性名称-->
+        <!--<result column="username" property="name"></result>-->
+    </resultMap>
+
+    <!--<select id="findById" resultType="com.demu.entity.Users">-->
+        <!--select * from users where id=#{id}-->
+    <!--</select>-->
+
+</mapper>
+
+        <!--从官方文档引入-->

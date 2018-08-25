@@ -5,7 +5,11 @@
   Time: 下午10:04
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" %>
+<%--引入jstl--%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <html>
 <head>
     <title>用户管理中心</title>
@@ -22,7 +26,7 @@
 
     <div class="row">
         <div class="page-header">
-            <h1>慕课网后台管理系统 <small>用户数据管理中心</small></h1>
+            <h1>后台管理系统 <small>用户数据管理中心</small></h1>
         </div>
     </div>
 
@@ -30,7 +34,6 @@
         <div class="jumbotron">
             <h1>MyBatis基础入门课程!</h1>
             <p>通过一个项目来完成基础部分的学习</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">查看更多，请上慕课网</a></p>
             <p><a class="btn btn-primary btn-lg"   role="button">新增用户</a></p>
         </div>
     </div>
@@ -46,6 +49,33 @@
                 <th>用户状态</th>
                 <th>操作</th>
             </tr>
+
+            <c:forEach items="${usersList}" var="user">
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.username}</td>
+                    <td>${user.nickname}</td>
+                    <td>${user.email}</td>
+                    <td>${user.phone}</td>
+                    <td>${user.createTime}</td>
+                    <c:if test="${user.userStatus==0}">
+                        <td>正常</td>
+                    </c:if>
+                    <c:if test="${user.userStatus==1}">
+                        <td>锁定</td>
+                    </c:if>
+                    <c:if test="${user.userStatus==2}">
+                        <td>删除</td>
+                    </c:if>
+
+                    <td>
+                        <a href="${pageContext.request.contextPath}/detail?id=${user.id}">查看</a>
+                        <a href="">修改</a>
+                        <a href="">删除</a>
+                    </td>
+                </tr>
+            </c:forEach>
+
 
         </table>
     </div>
