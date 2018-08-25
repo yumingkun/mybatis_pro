@@ -97,7 +97,7 @@ public class UserDAO {
     }
 
     /**
-     * 用于修改用户资料的方法
+     * 根据id删除
      * @return
      */
     public void delUsers(Integer id) {

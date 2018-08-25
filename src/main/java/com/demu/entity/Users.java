@@ -43,21 +43,15 @@ public class Users {
         this.userStatus = userStatus;
     }
 
-    public Users(int id, String nickname, int age, String gender, String email, String phone, Date date, String remark) {
-        this.id=id;
-    }
 
-    public Users(int id , String nickname, Integer age, String gender, String phone, String email, Date updateTime, String remark) {
+    public Users(int id, String nickname, Integer age, String gender, String phone, String email, Date updateTime, String remark) {
         this.id = id;
-
         this.nickname = nickname;
         this.age = age;
         this.gender = gender;
         this.phone = phone;
         this.email = email;
-
         this.updateTime = updateTime;
-
         this.remark = remark;
     }
 
